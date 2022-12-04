@@ -2,9 +2,8 @@
   --primary: #f40082;
   --secondary: #ffd200;
 
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   width: 700px;
 }
 
@@ -42,7 +41,7 @@
 
 .currentTime,
 .duration {
-  font-style: monospace;
+  font-family: monospace;
   font-size: 16px;
 }
 
@@ -51,9 +50,9 @@
 }
 
 .progressBar {
-  --bar-bg: #ffe3e4;
-  --seek--before--width: 100px;
-  --seek--before--color: #ffc2a1;
+  --bar-bg: #ffe3d4;
+  --seek-before-width: 0;
+  --seek-before-color: #ffc2a1;
   --knobby: #3452a5;
   --selectedKnobby: #26c9c3;
 
@@ -66,7 +65,7 @@
   outline: none;
 }
 
-/* progress bar -safari */
+/* progress bar - safari */
 .progressBar::-webkit-slider-runnable-track {
   background: var(--bar-bg);
   border-radius: 10px;
@@ -76,7 +75,7 @@
   outline: none;
 }
 
-/* progress bar -firefox */
+/* progress bar - firefox */
 .progressBar::-moz-range-track {
   background: var(--bar-bg);
   border-radius: 10px;
@@ -90,12 +89,12 @@
   border: 0;
 }
 
-/* Progress bar -chrome and safari */
+/* progress bar - chrome and safari */
 .progressBar::before {
-  content: " ";
+  content: "";
   height: 11px;
-  width: var(--seek--before--width);
-  background-color: var(--seek--before--color);
+  width: var(--seek-before-width);
+  background-color: var(--seek-before-color);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   position: absolute;
@@ -105,15 +104,15 @@
   cursor: pointer;
 }
 
-/* Progress bar -firefox */
+/* progress bar - firefox */
 .progressBar::-moz-range-progress {
-  background-color: var(--seek--before--color);
+  background-color: var(--seek-before-color);
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   height: 11px;
 }
 
-/* Knobby -chrome and safari */
+/* knobby - chrome and safari */
 .progressBar::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 15px;
@@ -128,10 +127,27 @@
   box-sizing: border-box;
 }
 
-/* Knobby while draggig -chrome and safari */
+/* knobby while dragging - chrome and safari */
 .progressBar:active::-webkit-slider-thumb {
   transform: scale(1.2);
-  background-color: var(--selectedKnobby);
+  background: var(--selectedKnobby);
 }
 
-/* Knobby -firefox */
+/* knobby - firefox */
+.progressBar::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: transparent;
+  background-color: var(--knobby);
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+/* knobby while dragging - firefox */
+.progressBar:active::-moz-range-thumb {
+  transform: scale(1.2);
+  background: var(--selectedKnobby);
+}
